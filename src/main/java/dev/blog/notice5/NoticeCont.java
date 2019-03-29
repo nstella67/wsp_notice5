@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -87,6 +88,15 @@ public class NoticeCont {
 		mav.setViewName("redirect:/notice/list.do");
 		int count=dao.delete(dto);
 		mav.addObject("count", count);
+		return mav;
+	}//createProc() end
+	
+	@RequestMapping(value="/notice/search.do", method=RequestMethod.GET)
+	public ModelAndView search(String col, String word) {
+		ModelAndView mav=new ModelAndView();
+		mav.setViewName("notice/list");
+		ArrayList<NoticeDTO> list=dao.search(col, word);
+		mav.addObject("list", list);
 		return mav;
 	}//createProc() end
 	

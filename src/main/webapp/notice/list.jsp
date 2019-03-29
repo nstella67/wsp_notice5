@@ -34,6 +34,26 @@
 			</tr>
 		</c:forEach>
 	</table>
+
+	<c:if test="${!(empty requestScope.list) }">
+		<br>	<!-- 검색시작 -->
+		<table>
+			<tr>
+				<td colspan="6" style="text-align: center; height:50px;">
+					<form method="get" action="search.do">
+						<select name="col">
+							<option value="title">내용
+							<option value="rname">작성자
+							<option value="title_rname">내용+작성자
+						</select>
+						<input type="text" name="word">
+						<input type="submit" value="검색">
+					</form>
+				</td>
+			</tr>
+		</table>
+	</c:if>
+	
 	
 	<div class="bottom">
 		<input type="button" value="등록" onclick="location.href='./create.do'">

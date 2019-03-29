@@ -1,6 +1,7 @@
 package dev.blog.notice5;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public interface NoticeMapper {
 	/*
@@ -22,4 +23,7 @@ public interface NoticeMapper {
 
 	//<insert id="delete">
 	public int delete(NoticeDTO dto);
+	
+	//<select id="search">
+	public ArrayList<NoticeDTO> search(HashMap searchMap);
 }//interface end

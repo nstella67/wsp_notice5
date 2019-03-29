@@ -1,6 +1,7 @@
 package dev.blog.notice5;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,5 +49,14 @@ public class NoticeDAO {
 		int count=mapper.delete(dto);
 		return count;
 	}//update() end
+	
+	public ArrayList<NoticeDTO> search(String col, String word){
+		NoticeMapper mapper=sqlSession.getMapper(NoticeMapper.class);
+		HashMap searchMap=new HashMap();
+		searchMap.put("col", col);
+		searchMap.put("word", word);
+		ArrayList<NoticeDTO> list=mapper.search(searchMap);
+		return list;
+	}//search() end
 	
 }//class end
